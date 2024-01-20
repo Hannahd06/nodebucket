@@ -27,6 +27,7 @@ export class NavComponent {
     this.appUser = {} as AppUser;
     this.isLoggedin = this.cookieService.get('session_user') ? true : false;
 
+   // check if user is logged in and log user's name to console
     if (this.isLoggedin) {
       this.appUser = {
         fullName: this.cookieService.get('session_name')
@@ -35,6 +36,7 @@ export class NavComponent {
     }
   }
 
+  // function to sign out user and clear cookies
   signout() {
     console.log('Signing out...');
     this.cookieService.deleteAll();

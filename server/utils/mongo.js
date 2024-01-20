@@ -2,8 +2,10 @@
 
 const { MongoClient } = require('mongodb');
 
+// Crete a variable to hold link to connect to MongoDB collection
 const MONGO_URL = 'mongodb+srv://nodebucket_user:s3cret@bellevueuniversity.ozktyyu.mongodb.net/nodebucketDB?retryWrites=true&w=majority';
 
+// Connect to mongoDB
 const mongo = async(operations, next) => {
   try {
     console.log('connecting to db...');

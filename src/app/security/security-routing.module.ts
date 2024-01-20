@@ -11,6 +11,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SecurityComponent } from './security.component';
 import { SigninComponent } from './signin/signin.component';
 
+// Route to sign in page
 const routes: Routes = [
   {
     path: '',
