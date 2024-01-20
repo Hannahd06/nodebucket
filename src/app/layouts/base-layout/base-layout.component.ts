@@ -1,7 +1,8 @@
 /**
  * Title: base-layout.component.ts
  * Author: Professor Krasso
- * Date: 8/5/23
+ * Modified by: Hannah Del Real
+ * Date: 1/15/24
  */
 
 // imports statements

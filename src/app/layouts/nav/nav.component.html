@@ -1,1 +1,70 @@
-<nav></nav>
+<!--
+    Title: nav.component.html
+    Author: Professor Richard Krasso
+    Modified by: Hannah Del Real
+    Date: 01/17/2023
+    Description:  Navigation  for the Nodebucket.
+-->
+
+<nav class="navi ps-3 navbar-expand-sm d-flex primary fixed-top">
+  <!--Logo for Nodebucket acts as link back to home page-->
+  <a routerLink="/" class="navbar-brand">
+    <img src="./assets/nb-logo.png" alt="nodebucket text with logo of cartoon raven reading a book" style="height: 80px;">
+  </a>
+<!-- Navigation links-->
+  <button
+  class="navbar-toggler"
+  type="button"
+  data-bs-toggle="collapse"
+  data-bs-target="#navbarResponsive"
+  aria-controls="navbarResponsive"
+  aria-expanded="false"
+  aria-label="Toggle navigation"
+  >
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ms-auto pt-2">
+
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact">Contact Us</a>
+      </li>
+
+      <!-- If user is not logged in display login link -->
+      <li *ngIf="!isLoggedin" class="nav-item">
+        <a class="nav-link" routerLink="security/signin">Sign In</a>
+      </li>
+      <!-- User Icon display for signed on user with navigation to  task page -->
+      <li *ngIf="isLoggedin" class="nav-item dropdown">
+        <a href="#"
+        class="nav-link pe-3"
+        id="navbarDropdown"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        >
+          <span class="material-icons">
+            person
+          </span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <li class="dropdown-item">
+            Signed in as {{ appUser.fullName }}
+          </li>
+          <li class="dropdown-item">
+            <a routerLink="task-management" class="dropdown-item link">My tasks</a>
+          </li>
+          <li class="dropdown-item">
+            <a (click)="signout()" class="dropdown-item link">Sign out</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

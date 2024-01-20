@@ -1,7 +1,8 @@
 /**
  * Title: app.component.ts
  * Author: Professor Krasso
- * Date: 8/5/23
+ * Modified by: Hannah Del Real
+ * Date: 01/17/24
  */
 
 // imports statements

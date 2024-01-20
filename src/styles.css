@@ -1,1 +1,108 @@
+/**
+    Title: styles.css
+    Author: Professor Richard Krasso
+    Modified by: Hannah Del Real
+    Date: 01/15/23
+    Description: CSS styling for NodeBucket
+*/
+
 /* You can add global styles to this file, and also import other style files */
+main {
+  background-color: #d1d1d1;
+  padding: 50px;
+  margin-top: 6%;
+  margin-bottom: 100px;
+}
+
+/* Center align any text */
+.text-align {
+  text-align: center;
+}
+
+/* homepage styling */
+
+.home-images {
+  width: 3px;
+  margin-bottom: 20px;
+  border: #062b6f dotted 3px;
+}
+.home-title {
+  font-weight: bolder;
+}
+
+/* space out content on homepage */
+.home-spacing {
+  margin: 20px;
+}
+
+.home-spacing a {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.home-spacing a:hover {
+  color: rgb(165, 132, 48);
+  text-decoration: underline;
+}
+
+/* styling for footer */
+.footer {
+  border-top: rgb(141, 127, 50) 10px solid;
+  background-color: #062b6f;
+  margin: auto;
+}
+
+nav {
+  border-bottom: rgb(208, 190, 87) 10px solid;
+}
+.footer-logo {
+  width: 60px;
+  padding: 10px;
+}
+
+/* Nav-bar styling */
+
+.nav-item {
+  padding: 20px;
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+
+.nav-item:hover, .return-btn:hover {
+  background-color: rgb(208, 190, 87);
+  color: #062b6f;
+}
+
+/* Form styling */
+
+.container {
+  margin: 10%;
+}
+
+form {
+  padding: 0 10%  10%  10%;
+}
+
+
+.form-label {
+  color: white;
+  font-weight: 400;
+}
+
+.return-btn {
+  font-weight: 500;
+}
+
+
+/* Colors */
+.primary {
+  background-color: #053287;
+}
+
+.accent {
+  background-color: rgb(185, 169, 77);
+}

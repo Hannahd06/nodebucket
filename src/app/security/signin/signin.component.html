@@ -1,0 +1,46 @@
+<!--
+    Title: signin.component.html
+    Author: Professor Richard Krasso
+    Modified by: Hannah Del Real
+    Date: 01/17/2023
+    Description:  Sign-in  Page  for the Nodebucket
+-->
+
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-4 col-md-6 col-sm-6">
+      <div class="card shadow primary">
+        <div class="text-center primary">
+          <h2 class="p-3" style="font-weight: 600; color: white; margin-top: 15px;">Employee Sign In</h2>
+        </div>
+
+
+        <div class="card-body primary">
+          <form [formGroup]="signinForm" (ngSubmit)="signin(); signinForm.reset();">
+          <div class="mb-4">
+            <!-- Error messages -->
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+              {{ errorMessage }}
+            </div>
+
+            <label for="empId" class="form-label"><em>Employee ID:</em></label>
+            <input type="text" class="form-control" id="empId" formControlName="empId">
+            <br />
+          </div>
+
+          <div class="d-grid col-8 mx-auto">
+            <button type="submit" class="btn text-white btn-lg" style="background-color: #a18a2e; font-weight: 500;">
+              <span *ngIf="!isLoading">Sign In</span>
+
+              <div *ngIf="isLoading">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...
+              </div>
+            </button>
+          </div>
+        </form>
+        </div>
+      </div>
+      <a routerLink="/" class="text-dark link-underline-opacity-0-hover return-btn">Return</a>
+    </div>
+  </div>
+</div>>
