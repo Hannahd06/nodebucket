@@ -3,37 +3,46 @@
     Author: Professor Richard Krasso
     Modified by: Hannah Del Real
     Date: 01/15/2023
-    Description:  Home Page  for the Loan App.
+    Description:  Home Page  for the Nodebucket.
 -->
 
-<div class="container-fluid">
-  <div class="row">
-    <h1 class="text-align">Welcome to the NodeBucket App!</h1>
-    <div class="row mt-5 d-flex justify-content-center">
-      <div class="col-sm-3 home-spacing text-align">
-        <img src="./assets/task-logo.jpg" alt="checklist next to raven cartoon" class="home-images">
+<div class="container-fluid mt-5 pb-4 mb-5">
+  <h1 class="text-align">Welcome to the NodeBucket App!</h1>
+  <br/>
+    <div class=" row mb-4 d-flex justify-content-center">
+      <div class="col-sm-4 home-spacing text-align">
+       <figure>
+        <img src="./assets/task-logo.jpg" alt="checklist next to raven cartoon" class="home-images img-fluid">
 
         <!--Link to sign-in page-->
         <a routerLink="security/signin"><h2>Sign-in</h2></a>
         <p>Sign-in to access our task manager. Effortlessly manage and organize tasks the way you want with our flexible task manager. Prioritizing tasks and keeping project on track are just one click away.</p>
+       </figure>
       </div>
 
-      <div class="col-sm-3 home-spacing text-align">
-        <img src="./assets/about-logo.jpg"  alt="group of three cartoon ravens" class="home-images column-gap-3">
+      <div class="col-sm-4 home-spacing text-align">
+        <figure>
+          <img src="./assets/about-logo.jpg"  alt="group of three cartoon ravens" class="home-images img-fluid">
 
-        <!--Link to about page-->
-        <a routerLink="/about"><h2>About Us</h2></a>
-        <p>Learn more about us and our services. Don't just hear it from us, check out what  our satisfied customers have to say. Let us show you why we are right for you!</p>
+          <!--Link to about page-->
+          <a routerLink="/about"><h2>About Us</h2></a>
+          <p>Learn more about us and our services. Don't just hear it from us, check out what our satisfied customers have to say. Let us show you why we are right for you!</p>
+        </figure>
       </div>
 
-      <div class="col-sm-3 home-spacing text-align">
-        <!--Link to contact page-->
-        <img src="./assets/contact-logo.jpg" alt="cartoon address notebook" class="home-images">
-        <a routerLink="/contact"><h2>Contact Us</h2></a>
-        <p>Have any questions. Check out our contact page and find the best way to get in touch.</p>
+      <div class="col-sm-4 home-spacing text-align">
+        <figure>
+
+          <img src="./assets/contact-logo.jpg" alt="cartoon address notebook" class="home-images img-fluid">
+
+          <!--Link to contact page-->
+          <a routerLink="/contact"><h2>Contact Us</h2></a>
+          <p>Have any questions? Check out our contact page and find the best way to get in touch.</p>
+
+        </figure>
       </div>
     </div>
-  </div>
+</div>
 
 
 

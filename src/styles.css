@@ -8,11 +8,9 @@
 
 /* You can add global styles to this file, and also import other style files */
 main {
-  background-color: #d1d1d1;
-  padding: 50px;
-  margin-top: 6%;
-  margin-bottom: 100px;
+  background-color: #b7b6b6;
 }
+
 
 /* Center align any text */
 .text-align {
@@ -30,16 +28,15 @@ h2 {
 /* homepage styling */
 
 .home-images {
-  width: 325px;
+  width: 350px;
   margin-bottom: 20px;
   border: #062b6f dotted 3px;
 }
 
 /* space out content on homepage */
 .home-spacing {
-  margin: 20px;
+  padding: 5px;
 }
-
 .home-spacing a {
   color: black;
   text-decoration: none;
@@ -47,21 +44,29 @@ h2 {
   font-size: 18px;
 }
 
-.home-spacing a:hover {
-  color: rgb(165, 132, 48);
+.home-spacing p {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.home-spacing h2:hover {
+  background-color: #062b6f;
   text-decoration: underline;
+  color: rgb(227, 210, 113);
+  border-radius: ;
 }
 
 /* styling for footer */
 .footer {
-  border-top: rgb(141, 127, 50) 10px solid;
+  border-top: rgb(185, 169, 77) 8px solid;
   background-color: #062b6f;
   margin: auto;
 }
 
 nav {
-  border-bottom: rgb(208, 190, 87) 10px solid;
+  border-bottom: rgb(185, 169, 77) 8px solid;
+  margin-bottom: 10px;
 }
+
 .footer-logo {
   width: 60px;
   padding: 10px;
@@ -70,15 +75,15 @@ nav {
 /* Nav-bar styling */
 
 .nav-item {
-  padding: 20px;
+  padding: 10px;
   color: white;
-  font-weight: 500;
-  font-size: 20px;
+  font-weight: 700;
+  font-size: 18px;
 }
 
 
 .nav-item:hover, .return-btn:hover {
-  background-color: rgb(208, 190, 87);
+  background-color: rgb(185, 169, 77);
   color: #062b6f;
 }
 
