@@ -2,8 +2,11 @@
 
 const { MongoClient } = require('mongodb');
 
+const config = require('./config')
+
 // Crete a variable to hold link to connect to MongoDB collection
-const MONGO_URL = 'mongodb+srv://nodebucket_user:s3cret@bellevueuniversity.ozktyyu.mongodb.net/nodebucketDB?retryWrites=true&w=majority';
+const MONGO_URL = config.dbURL
+
 
 // Connect to mongoDB
 const mongo = async(operations, next) => {

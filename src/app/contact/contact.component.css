@@ -1,0 +1,18 @@
+/**
+    Title: contact.component.css
+    Author: Professor Richard Krasso
+    Modified by: Hannah Del Real
+    Date: 01/23/24
+    Description: CSS styling for contact page for NodeBucket
+*/
+
+.card {
+  background-color: #062b6f;
+  color: white;
+  margin: 10%;
+  padding: 20px;
+}
+
+.contact-icons {
+  font-size: 40px;
+}
