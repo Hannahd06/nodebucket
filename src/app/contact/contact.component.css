@@ -9,10 +9,20 @@
 .card {
   background-color: #062b6f;
   color: white;
-  margin: 10%;
+  margin: 8%;
   padding: 20px;
+}
+
+.card-content {
+  padding: 30px;
 }
 
 .contact-icons {
   font-size: 40px;
+}
+
+h4 {
+  margin: 10px 50px;
+  text-align: center;
+  font-size: 20px;
 }

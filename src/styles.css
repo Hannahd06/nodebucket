@@ -9,7 +9,7 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
 /* You can add global styles to this file, and also import other style files */
-main, html {
+main {
   background-color: #b7b6b6;
 }
 
@@ -19,7 +19,7 @@ main, html {
   text-align: center;
 }
 
-p, h2 , h1, li {
+p, h4, h2 , h1, li {
   font-family: 'Times New Roman', Times, serif;
 }
 
