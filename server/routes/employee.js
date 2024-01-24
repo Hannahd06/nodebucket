@@ -6,6 +6,7 @@ const { mongo } =  require('../utils/mongo');
 const Ajv = require('ajv');
 const { ObjectId } = require('mongodb');
 
+// Generate an instance of Ajv
 const ajv = new Ajv();
 
 // ajv schema validation
@@ -26,6 +27,7 @@ router.get("/:empId", (req, res, next) => {
   try {
     let { empId } = req.params;
     empId =  parseInt(empId, 10);
+
 // Check if user input is a numerical value
     if (isNaN(empId)) {
       const err = new Error('Employee ID must be a number.');
@@ -35,7 +37,7 @@ router.get("/:empId", (req, res, next) => {
       return;
     }
 
-    // check if user input matches empId in database
+    // Check if user input matches empId in database
     mongo(async db => {
       const employee = await db.collection("employees").findOne({empId});
 
@@ -74,11 +76,14 @@ router.get("/:empId/tasks", (req, res, next) => {
       return;
     }
 
+    // Search database for matching empId
     mongo(async db => {
        const tasks = await db.collection('employees').findOne(
         { empId },
         { projection: { empId: 1, todo: 1, done: 1 } }
       )
+
+      // If empId does not match any employee in database return 404 error
 
       if (!tasks) {
 
@@ -88,7 +93,7 @@ router.get("/:empId/tasks", (req, res, next) => {
           next(err);
           return;
        }
-
+       // If empId matches, return empId and tasks
        res.send(tasks);
    }, next )
 
@@ -117,7 +122,7 @@ router.post("/:empId/tasks", (req, res, next) => {
       return;
     }
 
-
+    // Search database for matching empId
     mongo(async db => {
       const employee = await db.collection('employees').findOne({empId});
         if (!employee) {
@@ -129,12 +134,13 @@ router.post("/:empId/tasks", (req, res, next) => {
         }
 
 
-            //req.body validation
 
+        //req.body validation
         const { text } = req.body;
         const validator = ajv.compile(taskSchema);
         const isValid =  validator(text);
 
+        // If the user input does not pass validation, return 400 error
         if (!isValid) {
           const err = new Error('Bad Request');
           err.status = 400;
@@ -143,18 +149,19 @@ router.post("/:empId/tasks", (req, res, next) => {
           next(err);
           return;
         }
-
+        // Create task object
         const task = {
           _id: new ObjectId(),
           text: text.text,
           category: text.category
         }
-
+        // push new task object to the empId's todo tasks object
         const result = await db.collection('employees').updateOne(
           {empId},
           {$push: { todo: task }}
         )
 
+        // If a task is not added, return 500 error
         if (!result.modifiedCount) {
           const err =  new Error('Unable to create task for empId' + empId);
           err.status = 500;
@@ -163,6 +170,7 @@ router.post("/:empId/tasks", (req, res, next) => {
           return;
         }
 
+        // if a new task is successfully created, return _id
         res.status(201).send( { id:task._id })
       }, next)
   } catch (err) {
