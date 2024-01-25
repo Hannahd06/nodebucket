@@ -1,0 +1,48 @@
+
+.toDo-card {
+  margin: auto;
+  max-width: 1200px;
+}
+
+h4 {
+  color: rgb(183, 145, 63);
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.task-box {
+  padding: 10px;
+  border-radius: 5px;
+  border: white 4px solid;
+}
+
+.task-background {
+  background-color: rgb(113, 113, 115);
+}
+
+button {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.radioBtn {
+  padding-right: 12px;
+}
+
+label {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.category-bar {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #03286b;
+  border-radius: 5px;
+}
+
+
+@media (min-width: 700px) {
+  .list-gap {
+    margin-right: 100px;
+  }
+ }

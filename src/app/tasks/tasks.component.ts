@@ -11,6 +11,7 @@ import { TaskService } from '../shared/task.service';
 import { Employee } from '../shared/employee.interface';
 import { Item } from '../shared/item.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
@@ -27,20 +28,22 @@ export class TasksComponent {
   successMessage:string;
 
   newTaskForm: FormGroup = this.fb.group({
-    text: [null, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])]
-  });
+    text: [null, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])],
+    category: [null]
+  })
 
   constructor (private cookieService: CookieService, private taskService: TaskService, private fb:FormBuilder) {
-    this.employee = {} as Employee;
-    this.todo = [];
-    this.done = [];
-    this.errorMessage = '';
-    this.successMessage = '';
+    this.employee = {} as Employee
+    this.todo = []
+    this.done = []
+    this.errorMessage = ''
+    this.successMessage = ''
 
     this.empId = parseInt(this.cookieService.get('session_user'), 10);
-    this.taskService.getTasks(this.empId).subscribe({
+    this.taskService.getTask(this.empId).subscribe({
+      // gets the empId from logged in user
       next: (res: any) => {
-        console.log('Employee',res);
+        console.log('Employee', res);
         this.employee = res;
       },
 
@@ -50,8 +53,11 @@ export class TasksComponent {
       },
 
       complete: () => {
-        this.employee.todo ? this.employee.todo : this.todo = [];
-        this.employee.done ? this.employee.done : this.done = [];
+        console.log('complete')
+        // get array of todo items
+         this.employee.todo ? this.todo = this.employee.todo : this.todo = [];
+        // get an array of done items
+        this.employee.done ? this.done = this.employee.done : this.done = [];
 
         console.log('todo', this.todo);
         console.log('done', this.done);
@@ -60,18 +66,33 @@ export class TasksComponent {
   }
 
   addTask() {
-    const text= this.newTaskForm.controls['text'].value;
-    this.taskService.addTask(this.empId, text).subscribe({
+    // get task description from user input
+    const text = this.newTaskForm.controls['text'].value;
+
+    // get task category from radio buttons selection
+    const category = this.newTaskForm.controls['category'].value;
+
+    // If user does not select a button alert message
+    if (!category) {
+      this.errorMessage ='Please select a category'
+      this.hideAlert();
+      return
+    }
+    // Create a variable to hold both the text and category object values from user input
+    let newTask = this.getTask(text, category)
+
+    // Add Task
+    this.taskService.addTask(this.empId, newTask).subscribe({
       next: (task: any) => {
         console.log('Task added with id ', task.id);
-        const newTask = {
-          _id: task.id,
-          text: text
-        }
+        newTask._id = task.id; // update new task id with generated task id
+        // Push new task to todo list array
         this.todo.push(newTask);
-        this.newTaskForm.reset();
+        this.newTaskForm.reset(); // Reset the form
 
+        // Alert message to notify user that task was added
         this.successMessage = "Task has been added successfully";
+        console.log(this.successMessage)
 
         this.hideAlert();
       },
@@ -84,13 +105,72 @@ export class TasksComponent {
 
     })
   }
-
+  // Set a timeout for alert displays
   hideAlert() {
     setTimeout( () => {
       this.errorMessage = '';
       this.successMessage= '';
-    }, 500)
+    }, 5000)
   }
 
+
+// Use get task to gather values form user input fir categoryTitle
+  getTask(text: string, categoryTitle: string) {
+
+    let task: Item = {} as Item
+
+    // Colors for each category
+    const green ='#00b300';
+    const blue = '#00b8e6';
+    const red = '#cc0000';
+    const yellow = '#fbfb0e';
+
+    switch (categoryTitle) {
+
+    // If user selects meetings button, categoryColor is green
+      case 'meetings':
+        task = {
+          text: text,
+          category: {
+            categoryTitle: categoryTitle,
+            categoryColor: green
+          }
+        }
+        return task
+
+    // If user selects projects button, categoryColor is blue
+        case 'projects':
+          task = {
+            text: text,
+            category: {
+              categoryTitle: categoryTitle,
+              categoryColor: blue
+            }
+          }
+          return task
+
+    // If user selects tests button, categoryColor is red
+          case 'tests':
+            task = {
+              text: text,
+              category: {
+                categoryTitle: categoryTitle,
+                categoryColor: red
+              }
+            }
+            return task
+    // If user selects miscellaneous button, categoryColor defaults to yellow
+            default:
+            task = {
+              text: text,
+              category: {
+                categoryTitle: categoryTitle,
+                categoryColor: yellow
+              }
+            }
+            return task
+    }
+
+  }
 
 }

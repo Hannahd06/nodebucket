@@ -6,12 +6,14 @@
     Description: Contact Page for Nodebucket created with Angular.
     Resources: Map embedding code was taken from google maps https://www.google.com/maps/place/Bellevue+University/@41.150572,-95.9207329,17z/data=!3m1!4b1!4m6!3m5!1s0x8793886a86ca807f:0x838e857240d175eb!8m2!3d41.150572!4d-95.918158!16zL20vMDVkZ3Nn?entry=ttu
 -->
-<div class="container-fluid mt-5 pb-1" >
-  <div class=" mt-3 card">
+<div class="container-fluid" >
+  <div class=" mt-5 card">
     <h1 class="text-align">Contact Us</h1>
-    <h4>Have any questions. Come visit us at our on-site location. Not in the area? Feel free to reach us phone or email. We look forward to hearing from you. </h4>
+    <h4>Have any questions? Come visit us at our on-site location. Not in the area? Feel free to reach us phone or email. We look forward to hearing from you. </h4>
+
     <div class="card-content row d-flex mt-4">
-      <div class="col-sm-4 d-grid justify-content-center mb-4">
+      <div class="col-sm-4 d-grid justify-content-center">
+        <!--Phone number -->
         <div class="text-align">
           <div class="contact-icons">
               <i class="bi bi-telephone"></i>
@@ -19,27 +21,36 @@
 
           <div class="text-align">
               <p>
+                <a href="tel:+18007567920">
                 toll-free: 1.800.756.7920
+                </a>
               </p>
           </div>
+          <br />
         </div>
+
+        <!-- Email -->
         <div class="text-align">
           <div class="contact-icons">
               <i class="bi bi-envelope"></i>
           </div>
 
-          <div class="text-align">
-              <p>
+          <div class=" text-align">
+              <p><a href="mailto: nodebucket_support@bellevue.edu">
                 nodebucket_support@bellevue.edu
-              </p>
+              </a></p>
           </div>
+          <br />
         </div>
+
+        <!-- Address -->
         <div class="text-align">
           <div class="contact-icons">
             <i class="bi bi-geo-alt"></i>
+            <br />
           </div>
 
-          <div class="text-align">
+          <div class=" text-align">
               <p>
                   100 Galvin Rd S
               </p>
@@ -49,10 +60,11 @@
           </div>
         </div>
       </div>
-      <div class="col-md-8 d-flex justify-content-around" style="margin: auto;">
+
+      <!-- Google Map -->
+      <div class="col-md-8 d-flex justify-content-around map-border">
         <div class="ratio ratio-16x9">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3004.264842774506!2d-95.92073292360382!3d41.15057197133092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8793886a86ca807f%3A0x838e857240d175eb!2sBellevue%20University!5e0!3m2!1sen!2sus!4v1706044772817!5m2!1sen!2sus" width="500" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
         </div>
       </div>
     </div>

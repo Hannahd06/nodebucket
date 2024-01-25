@@ -6,17 +6,22 @@
     Description:  Navigation  for the Nodebucket.
 -->
 
-<div class="container-fluid pt-2" style="min-height: 600px;">
-  <h1 class="text-align">My Tasks</h1>
+<div class="container-whole pb-5  text-white" style="min-height: 700px;">
+  <div class="toDo-card primary justify-content-center pt-5 mt-5">
+    <h1 class="text-align">My Tasks</h1>
   <!-- Display error and success messages -->
   <div class="justify-content-center pt-4">
     <div class="col-sml-10 col-mid-8 col-lg-6>">
-      <div *ngIf="errorMessage" role="alert">
-        {{errorMessage}}
+      <div class="col-sm-6 text-align" style="margin: auto;">
+        <div class="justify-content-center" ngClass="alert alert-info" *ngIf="errorMessage" role="alert">
+          {{ errorMessage }}
+        </div>
       </div>
 
-      <div *ngIf="successMessage" role="alert">
-        {{successMessage}}
+      <div class="col-sm-6 text-align" style="margin: auto;">
+        <div class="justify-content-center" class=" alert alert-success" *ngIf="successMessage" role="alert">
+          {{ successMessage }}
+        </div>
       </div>
     </div>
   </div>
@@ -26,11 +31,11 @@
       <form [formGroup]="newTaskForm"  (ngSubmit)="addTask();">
       <div class="input-group mb-3">
         <input type="text" class="form-control" formControlName="text" placeholder="Add new task">
-        <button class="btn btn-outline-secondary" type="submit" [disabled]="!newTaskForm.valid" id="btnAdd"></button>
+        <button type="submit" class="btn text-white btn-lg" style="background-color: #a18a2e; font-weight: 500;" [disabled]="!newTaskForm.valid" id="btnAdd">  Add Task  </button>
       </div>
 
       <!-- validation required field -->
-      <div *nfIf="newTaskForm.controls['text'].touched && newTaskForm.controls['text'].hasError('required')">
+      <div *ngIf="newTaskForm.controls['text'].touched && newTaskForm.controls['text'].hasError('required')">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
           <strong>Please enter a task!</strong>
           <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -38,7 +43,7 @@
       </div>
 
       <!-- validation minimum field -->
-      <div *nfIf="newTaskForm.controls['text'].touched && newTaskForm.controls['text'].hasError('minlength')">
+      <div *ngIf="newTaskForm.controls['text'].touched && newTaskForm.controls['text'].hasError('minlength')">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
           <strong>The task field must be at least 3 characters long!</strong>
           <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -46,11 +51,38 @@
       </div>
 
        <!-- validation maximum field -->
-       <div *nfIf="newTaskForm.controls['text'].touched && newTaskForm.controls['text'].hasError('maxlength')">
+       <div *ngIf="newTaskForm.controls['text'].touched && newTaskForm.controls['text'].hasError('maxlength')">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
           <strong>The task field cannot be more than 50 characters!</strong>
           <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
+      </div>
+
+      <!--Radio buttons to select categories-->
+      <div class="category-bar text-align">
+        <!-- Meetings category -->
+        <div class="form-check form-check-inline radioBtn ">
+          <input type="radio" class="form-check-input" formControlName="category" name="category" id="meetingRadiobtn" value="meetings">
+          <label for="meetingRadiobtn" class="form-check-label" style="color: green;">Meetings</label>
+         </div>
+
+          <!-- Projects category -->
+        <div class="form-check form-check-inline radioBtn">
+          <input type="radio" class="form-check-input" formControlName="category" name="category" id="projectsRadiobtn" value="projects">
+          <label for="projectsRadiobtn" class="form-check-label" style="color:rgb(13, 199, 255)">Projects</label>
+         </div>
+
+          <!-- Tests category -->
+        <div class="form-check form-check-inline radioBtn">
+          <input type="radio" class="form-check-input" formControlName="category" name="category" id="testsRadiobtn" value="tests">
+          <label for="testsRadiobtn" class="form-check-label" style="color: red;">Tests</label>
+         </div>
+
+          <!-- Miscellaneous category -->
+        <div class="form-check form-check-inline">
+          <input type="radio" class="form-check-input" formControlName="category" name="category" id="misclnsRadiobtn" value="miscellaneous">
+          <label for="misclnsRadiobtn" class="form-check-label" style="color: yellow;">Miscellaneous</label>
+         </div>
       </div>
     </form>
     </div>
@@ -59,29 +91,35 @@
   <div class="row gy-2 justify-content-center">
 
     <!-- Todo column -->
-    <div class="col-sm-5 col-md-5 col-lg-3">
+    <div class="col-sm-6 col-md-8 col-lg-4 list-gap">
       <h4 class="text-align">ToDo</h4>
-      <div class="p-3 border bg-light">
+      <div class="p-3">
         <div class="container">
           <div *ngIf="todo.length === 0">
-            <div class="alert alert-info">
-              No tasks to do yet!
+            <div class="alert alert" style="background-color: #a18a2e;">
+              <p>No tasks to do yet!</p>
             </div>
           </div>
-          <div *ngFor="let item of todo" class="mt-2">
-            <div class="row border bg-white">
+          <div *ngFor="let item of todo" class="mt-1">
+            <div class="row task-box mb-3 task-background">
               <!-- column 1 task item -->
-              <div class="col-sm-6">
+              <div class="col-sm-2 d-inline-block">
                 <div class="card-body">
-                  {{ item.text }}
+                  <button class="btn d-inline-block" *ngIf="item.category.categoryColor != 'miscellaneous'" [ngStyle]="{'background-color': item.category.categoryColor}" title="{{item.category.categoryTitle}}" style="width: 20px; height: 20px; "></button>
                 </div>
+             </div>
+             <div class="col-sm-6 d-inline-block text-align">
+              <div class="card-body">
+                  {{ item.text }}
               </div>
+           </div>
+
               <!-- End column 1 -->
               <!-- column 2 task item -->
-              <div class="col-sm-6">
+              <div class="col-sm-4">
                 <div class="card-body float-end">
-                  <button class="btn">
-                    <i class="bi-bi-trash">delete</i>
+                  <button class="btn text-white">
+                    <i class="bi bi-trash" style="font-size: 18px;"></i>
                   </button>
                 </div>
               </div>
@@ -93,40 +131,47 @@
     </div>
     <!-- End ToDo column -->
 
-        <!-- Done column -->
-        <div class="col-sm-5 col-md-5 col-lg-3">
-          <h4 class="text-align">Done</h4>
-          <div class="p-3 border bg-light">
-            <div class="container">
-              <div *ngIf="done.length === 0">
-                <div class="alert alert-info">
-                  No tasks to do yet!
+    <!-- Done column -->
+    <div class="col-sm-6 col-md-8 col-lg-4">
+      <h4 class="text-align">Done</h4>
+      <div class="p-3">
+        <div class="container">
+          <div *ngIf="done.length === 0">
+            <div class="alert alert text-align" style="background-color: #a18a2e; padding:20">
+              <p>No tasks to do yet!</p>
+            </div>
+          </div>
+          <div *ngFor="let item of done" class="mt-1">
+            <div class="row task-box border mb-3 task-background">
+              <!-- column 1 task item -->
+              <div class="col-sm-2 d-inline-block">
+                <div class="card-body">
+                  <button class="btn d-inline-block" *ngIf="item.category.categoryColor != 'miscellaneous'" [ngStyle]="{'background-color': item.category.categoryColor}" title="{{item.category.categoryTitle}}" style="width: 20px; height: 20px; "></button>
+                </div>
+             </div>
+             <div class="col-sm-6 d-inline-block">
+              <div class="card-body">
+                  {{ item.text }}
+              </div>
+           </div>
+
+              <!-- End column 1 -->
+              <!-- column 2 task item -->
+              <div class="col-sm-4">
+                <div class="card-body float-end">
+                  <button class="btn">
+                    <i class="bi bi-trash"></i>
+                  </button>
                 </div>
               </div>
-              <div *ngFor="let item of todo" class="mt-2">
-                <div class="row border bg-white">
-                  <!-- column 1 task item -->
-                  <div class="col-sm-6">
-                    <div class="card-body">
-                      {{ item.text }}
-                    </div>
-                  </div>
-                  <!-- End column 1 -->
-                  <!-- column 2 task item -->
-                  <div class="col-sm-6">
-                    <div class="card-body float-end">
-                      <button class="btn">
-                        <i class="bi-bi-trash">delete</i>
-                      </button>
-                    </div>
-                  </div>
-                  <!--End column 2-->
-                </div>
-              </div>
+              <!--End column 2-->
             </div>
           </div>
         </div>
+      </div>
+    </div>
         <!-- End Done column -->
 
+  </div>
   </div>
 </div>

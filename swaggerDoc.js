@@ -98,11 +98,9 @@
  *                     properties:
  *                       categoryTitle:
  *                         type: string
- *                         enum: [meetings, projects, tests, miscellaneous]
  *                         description: Category titles
  *                       categoryColor:
  *                         type: string
- *                         enum: [green, blue, red, yellow]
  *                         description: Colors associated with category titles
  *             required:
  *               - text
