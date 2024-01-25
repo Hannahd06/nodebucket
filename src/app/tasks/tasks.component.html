@@ -6,4 +6,127 @@
     Description:  Navigation  for the Nodebucket.
 -->
 
-<p>tasks works!</p>
+<div class="container-fluid pt-2" style="min-height: 600px;">
+  <h1 class="text-align">My Tasks</h1>
+  <!-- Display error and success messages -->
+  <div class="justify-content-center pt-4">
+    <div class="col-sml-10 col-mid-8 col-lg-6>">
+      <div *ngIf="errorMessage" role="alert">
+        {{errorMessage}}
+      </div>
+
+      <div *ngIf="successMessage" role="alert">
+        {{successMessage}}
+      </div>
+    </div>
+  </div>
+  <!-- Input field to add a new task -->
+  <div class=" row justify-content-center pt-4">
+    <div class="col-sm-10 col-md-8 col-lg-6">
+      <form [formGroup]="newTaskForm"  (ngSubmit)="addTask();">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" formControlName="text" placeholder="Add new task">
+        <button class="btn btn-outline-secondary" type="submit" [disabled]="!newTaskForm.valid" id="btnAdd"></button>
+      </div>
+
+      <!-- validation required field -->
+      <div *nfIf="newTaskForm.controls['text'].touched && newTaskForm.controls['text'].hasError('required')">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Please enter a task!</strong>
+          <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+
+      <!-- validation minimum field -->
+      <div *nfIf="newTaskForm.controls['text'].touched && newTaskForm.controls['text'].hasError('minlength')">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>The task field must be at least 3 characters long!</strong>
+          <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+
+       <!-- validation maximum field -->
+       <div *nfIf="newTaskForm.controls['text'].touched && newTaskForm.controls['text'].hasError('maxlength')">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>The task field cannot be more than 50 characters!</strong>
+          <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+ <!-- Todo and don container -->
+  <div class="row gy-2 justify-content-center">
+
+    <!-- Todo column -->
+    <div class="col-sm-5 col-md-5 col-lg-3">
+      <h4 class="text-align">ToDo</h4>
+      <div class="p-3 border bg-light">
+        <div class="container">
+          <div *ngIf="todo.length === 0">
+            <div class="alert alert-info">
+              No tasks to do yet!
+            </div>
+          </div>
+          <div *ngFor="let item of todo" class="mt-2">
+            <div class="row border bg-white">
+              <!-- column 1 task item -->
+              <div class="col-sm-6">
+                <div class="card-body">
+                  {{ item.text }}
+                </div>
+              </div>
+              <!-- End column 1 -->
+              <!-- column 2 task item -->
+              <div class="col-sm-6">
+                <div class="card-body float-end">
+                  <button class="btn">
+                    <i class="bi-bi-trash">delete</i>
+                  </button>
+                </div>
+              </div>
+              <!--End column 2-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End ToDo column -->
+
+        <!-- Done column -->
+        <div class="col-sm-5 col-md-5 col-lg-3">
+          <h4 class="text-align">Done</h4>
+          <div class="p-3 border bg-light">
+            <div class="container">
+              <div *ngIf="done.length === 0">
+                <div class="alert alert-info">
+                  No tasks to do yet!
+                </div>
+              </div>
+              <div *ngFor="let item of todo" class="mt-2">
+                <div class="row border bg-white">
+                  <!-- column 1 task item -->
+                  <div class="col-sm-6">
+                    <div class="card-body">
+                      {{ item.text }}
+                    </div>
+                  </div>
+                  <!-- End column 1 -->
+                  <!-- column 2 task item -->
+                  <div class="col-sm-6">
+                    <div class="card-body float-end">
+                      <button class="btn">
+                        <i class="bi-bi-trash">delete</i>
+                      </button>
+                    </div>
+                  </div>
+                  <!--End column 2-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Done column -->
+
+  </div>
+</div>

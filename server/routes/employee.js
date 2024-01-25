@@ -9,16 +9,29 @@ const { ObjectId } = require('mongodb');
 // Generate an instance of Ajv
 const ajv = new Ajv();
 
+// Category schema for color
+const categorySchema = {
+  type: 'object',
+  properties: {
+    categoryTitle: { type: 'string' },
+    categoryColor: {type: 'string' }
+  },
+  required: ['categoryTitle', 'categoryColor'],
+  additionalProperties: false
+}
+
 // ajv schema validation
 const taskSchema = {
   type: 'object',
   properties: {
     text: { type: 'string' },
-    category: { type: 'string' }
+    category: categorySchema
   },
   required: ['text', 'category'],
   additionalProperties: false
 }
+
+
 
 
 // findEmployeeById

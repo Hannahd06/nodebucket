@@ -52,7 +52,7 @@
  *     responses:
  *       '200':
  *         description: Array of task documents returned
- *       '40':
+ *       '400':
  *         description: Bad Request
  *       '404':
  *         description: Invalid empId
@@ -89,12 +89,24 @@
  *             type: object
  *             properties:
  *               text:
- *                  type: object
- *                  properties:
- *                      text:
- *                          type: string
- *                      category:
- *                          type: string
+ *                 type: object
+ *                 properties:
+ *                   text:
+ *                     type: string
+ *                   category:
+ *                     type: object
+ *                     properties:
+ *                       categoryTitle:
+ *                         type: string
+ *                         enum: [meetings, projects, tests, miscellaneous]
+ *                         description: Category titles
+ *                       categoryColor:
+ *                         type: string
+ *                         enum: [green, blue, red, yellow]
+ *                         description: Colors associated with category titles
+ *             required:
+ *               - text
+ *
  *     responses:
  *       '201':
  *         description: New Task created
