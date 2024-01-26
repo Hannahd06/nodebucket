@@ -114,7 +114,10 @@ export class TasksComponent {
   }
 
 
-// Use get task to gather values form user input fir categoryTitle
+/** Use getTask and initiate a switch case to update with a value for categoryColor of the task object
+ * based on user's choice for radio button for category
+ * Ensures that all values in I schema are inputted so a new task can be added
+ */
   getTask(text: string, categoryTitle: string) {
 
     let task: Item = {} as Item
@@ -127,7 +130,7 @@ export class TasksComponent {
 
     switch (categoryTitle) {
 
-    // If user selects meetings button, categoryColor is green
+    // If user selects meetings button, categoryColor value is updated to variable green value
       case 'meetings':
         task = {
           text: text,
@@ -138,7 +141,7 @@ export class TasksComponent {
         }
         return task
 
-    // If user selects projects button, categoryColor is blue
+    // If user selects projects button, categoryColor is updated to variable blue value
         case 'projects':
           task = {
             text: text,
@@ -149,7 +152,7 @@ export class TasksComponent {
           }
           return task
 
-    // If user selects tests button, categoryColor is red
+    // If user selects tests button, categoryColor is updated to variable red value
           case 'tests':
             task = {
               text: text,
@@ -159,7 +162,7 @@ export class TasksComponent {
               }
             }
             return task
-    // If user selects miscellaneous button, categoryColor defaults to yellow
+    // If user selects miscellaneous button, categoryColor defaults to variable yellow value
             default:
             task = {
               text: text,
