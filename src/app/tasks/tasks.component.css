@@ -1,3 +1,11 @@
+/**
+    Title: tasks.component.css
+    Author: Professor Richard Krasso
+    Modified by: Hannah Del Real
+    Date: 01/15/24
+    Description: CSS styling for the tasks page
+*/
+
 
 .toDo-card {
   margin: auto;
@@ -16,9 +24,12 @@ h4 {
   border: white 4px solid;
 }
 
-.task-background {
-  background-color: rgb(113, 113, 115);
+.card-body {
+  font-size: 18px;
+  font-weight: 600;
+  margin: auto;
 }
+
 
 button {
   font-family: 'Times New Roman', Times, serif;
@@ -41,7 +52,7 @@ label {
 }
 
 
-@media (min-width: 700px) {
+@media (min-width: 625px) {
   .list-gap {
     margin-right: 100px;
   }

@@ -101,25 +101,20 @@
             </div>
           </div>
           <div *ngFor="let item of todo" class="mt-1">
-            <div class="row task-box mb-3 task-background">
+            <div class="row task-box mb-3" *ngIf="item.category.categoryColor != 'miscellaneous'" [ngStyle]="{'background-color': item.category.categoryColor}" title="{{item.category.categoryTitle}}">
               <!-- column 1 task item -->
-              <div class="col-sm-2 d-inline-block">
-                <div class="card-body">
-                  <button class="btn d-inline-block" *ngIf="item.category.categoryColor != 'miscellaneous'" [ngStyle]="{'background-color': item.category.categoryColor}" title="{{item.category.categoryTitle}}" style="width: 20px; height: 20px; "></button>
-                </div>
-             </div>
-             <div class="col-sm-6 d-inline-block text-align">
-              <div class="card-body">
+             <div class="col-sm-6 mt-2" >
+               <div class="card-body">
                   {{ item.text }}
-              </div>
-           </div>
-
+               </div>
+             </div>
               <!-- End column 1 -->
-              <!-- column 2 task item -->
-              <div class="col-sm-4">
-                <div class="card-body float-end">
+
+              <!-- column 2 -->
+              <div class="col-sm-6">
+                <div class=" float-end">
                   <button class="btn text-white">
-                    <i class="bi bi-trash" style="font-size: 18px;"></i>
+                    <i class="bi bi-trash" style="font-size: 26px;"></i>
                   </button>
                 </div>
               </div>
@@ -132,35 +127,30 @@
     <!-- End ToDo column -->
 
     <!-- Done column -->
-    <div class="col-sm-6 col-md-8 col-lg-4">
+    <div class="col-sm-6 col-md-8 col-lg-4 list-gap">
       <h4 class="text-align">Done</h4>
       <div class="p-3">
         <div class="container">
           <div *ngIf="done.length === 0">
-            <div class="alert alert text-align" style="background-color: #a18a2e; padding:20">
+            <div class="alert alert" style="background-color: #a18a2e;">
               <p>No tasks to do yet!</p>
             </div>
           </div>
           <div *ngFor="let item of done" class="mt-1">
-            <div class="row task-box border mb-3 task-background">
+            <div class="row task-box mb-3" *ngIf="item.category.categoryColor != 'miscellaneous'" [ngStyle]="{'background-color': item.category.categoryColor}" title="{{item.category.categoryTitle}}">
               <!-- column 1 task item -->
-              <div class="col-sm-2 d-inline-block">
-                <div class="card-body">
-                  <button class="btn d-inline-block" *ngIf="item.category.categoryColor != 'miscellaneous'" [ngStyle]="{'background-color': item.category.categoryColor}" title="{{item.category.categoryTitle}}" style="width: 20px; height: 20px; "></button>
-                </div>
-             </div>
-             <div class="col-sm-6 d-inline-block">
-              <div class="card-body">
+             <div class="col-sm-6 mt-2" >
+               <div class="card-body">
                   {{ item.text }}
-              </div>
-           </div>
-
+               </div>
+             </div>
               <!-- End column 1 -->
-              <!-- column 2 task item -->
-              <div class="col-sm-4">
-                <div class="card-body float-end">
-                  <button class="btn">
-                    <i class="bi bi-trash"></i>
+
+              <!-- column 2 -->
+              <div class="col-sm-6">
+                <div class=" float-end">
+                  <button class="btn text-white">
+                    <i class="bi bi-trash" style="font-size: 26px;"></i>
                   </button>
                 </div>
               </div>

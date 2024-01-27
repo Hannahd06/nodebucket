@@ -123,10 +123,10 @@ export class TasksComponent {
     let task: Item = {} as Item
 
     // Colors for each category
-    const green ='#00b300';
-    const blue = '#00b8e6';
+    const green ='#127800';
+    const blue = '#046eb0';
     const red = '#cc0000';
-    const yellow = '#fbfb0e';
+    const yellow = '#9e9602';
 
     switch (categoryTitle) {
 
