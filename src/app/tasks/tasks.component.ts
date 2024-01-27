@@ -29,7 +29,7 @@ export class TasksComponent {
 
   newTaskForm: FormGroup = this.fb.group({
     text: [null, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])],
-    category: [null]
+    category: [null, Validators.required]
   })
 
   constructor (private cookieService: CookieService, private taskService: TaskService, private fb:FormBuilder) {
@@ -72,12 +72,7 @@ export class TasksComponent {
     // get task category from radio buttons selection
     const category = this.newTaskForm.controls['category'].value;
 
-    // If user does not select a button alert message
-    if (!category) {
-      this.errorMessage ='Please select a category'
-      this.hideAlert();
-      return
-    }
+
     // Create a variable to hold both the text and category object values from user input
     let newTask = this.getTask(text, category)
 

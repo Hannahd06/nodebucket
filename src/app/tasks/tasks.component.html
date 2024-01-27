@@ -31,7 +31,7 @@
       <form [formGroup]="newTaskForm"  (ngSubmit)="addTask();">
       <div class="input-group mb-3">
         <input type="text" class="form-control" formControlName="text" placeholder="Add new task">
-        <button type="submit" class="btn text-white btn-lg" style="background-color: #a18a2e; font-weight: 500;" [disabled]="!newTaskForm.valid" id="btnAdd">  Add Task  </button>
+        <button type="submit" class="btn text-white btn-lg" style="background-color: #a18a2e; font-weight: 500;" [disabled]="!newTaskForm.controls['text'].valid" id="btnAdd">  Add Task  </button>
       </div>
 
       <!-- validation required field -->
@@ -54,6 +54,14 @@
        <div *ngIf="newTaskForm.controls['text'].touched && newTaskForm.controls['text'].hasError('maxlength')">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
           <strong>The task field cannot be more than 50 characters!</strong>
+          <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+
+      <!-- Category validation required field -->
+      <div *ngIf="newTaskForm.controls['text'].touched && newTaskForm.controls['category'].hasError('required')">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Please select a category!</strong>
           <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       </div>
