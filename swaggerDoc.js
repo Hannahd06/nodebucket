@@ -1,4 +1,11 @@
 /**
+ * Title: home.component.ts
+ * Author: Professor Krasso
+ * Modified by: Hannah Del Real
+ * Date: 01/17/24
+ */
+
+/**
  * @openapi
  * tags:
  *   name: Employees
