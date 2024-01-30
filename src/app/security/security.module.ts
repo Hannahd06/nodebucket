@@ -15,11 +15,13 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { SecurityRoutingModule } from './security-routing.module';
 import { SecurityComponent } from './security.component';
 import { SigninComponent } from './signin/signin.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     SecurityComponent,
-    SigninComponent
+    SigninComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,102 @@
+.card {
+  margin: 5%;
+  padding: 30px;
+  background-color: rgb(34, 48, 137);
+  color: white;
+}
+
+hr {
+  height:5px;
+  background:yellow;
+  border:0;
+}
+
+
+i {
+  padding-right: 20px;
+  font-size: 60px;
+}
+
+/** styling for features box */
+
+.features {
+  background-color: rgb(93, 102, 121, 0.75);
+  width: 100%;
+  padding: 30px;
+  margin-top: 20px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+/** styling for testimonial box */
+.testimonial {
+  background-size: cover;
+  background-position: center;
+  background-image: url("../../assets/larm-rmah-about.jpg");
+  margin: auto;
+  max-width: 800px;
+
+}
+
+
+.testimonial-text {
+  font-weight: 500;
+  font-size: 18px;
+  background-color: rgba(35, 35, 35, 0.5);
+  padding: 50px
+}
+
+/** styling for team members about */
+
+.team-container {
+  background-color: rgb(120, 94, 34);
+  margin-top: 50px;
+  padding: 30px;
+}
+
+.img-container {
+  position: relative;
+  display: block;
+  width: 425px;
+}
+
+.img-attribution {
+  float: inline-end;
+  bottom: 0;
+  right: 0;
+  margin: 0 .5em .5em 0;
+  padding: .25em;
+  color: white;
+  text-decoration: none;
+}
+.img-attribution:hover {
+  text-decoration: underline;
+  background-color: rgb(163, 139, 0);
+}
+
+.about-images {
+  width: 400px;
+}
+
+ h4 {
+  font-size: 26px;
+  font-weight: 600;
+  color: rgb(227, 210, 113);
+
+}
+.about-text {
+  padding-top: 15px;
+  padding-right: 30px;
+  font-size: 18px;
+  padding-top: 20px;
+}
+
+/** styling adjustments smaller screen sizes */
+
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+
+
+}
