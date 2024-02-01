@@ -1,3 +1,10 @@
+/**
+ * Title: not-found.component.ts
+ * Author: Professor Krasso
+ * Modified by: Hannah Del Real
+ * Date: 01/29/34
+ */
+
 import { Component } from '@angular/core';
 
 @Component({

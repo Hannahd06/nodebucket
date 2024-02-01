@@ -25,4 +25,32 @@ export class TaskService {
     addTask(empId: number, text: Item) {
       return this.http.post('/api/employees/' + empId + '/tasks', { text } );
     }
+
+  /**
+  * @description deleteTask function to delete a task from empId
+  * @param empId
+  * @param taskId
+  * @returns status code 204 (no content)
+  */
+
+  deleteTask(empId: number, taskId: string) {
+    console.log('/api/employees/' + empId + '/tasks/' + taskId);
+    // delete task with taskId for employee with empId
+    return this.http.delete('/api/employees/' + empId + '/tasks/' + taskId);
+  }
+
+  /**
+  * @description update function to update a task from empId
+  * @param empId
+  * @param todo
+  * @param done
+  * @returns status code 204 (no content)
+  */
+
+  updateTask(empId: number, todo: Item[], done: Item[]) {
+    console.log('/api/employees/' + empId + '/tasks/');
+    // update task for todo and done lists for employee with empId
+    return this.http.put('/api/employees/' + empId + '/tasks/', { todo, done});
+  }
 }
+

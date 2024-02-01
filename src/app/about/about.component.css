@@ -1,5 +1,13 @@
+/**
+    Title: about.component.css
+    Author: Professor Richard Krasso
+    Modified by: Hannah Del Real
+    Date: 01/15/24
+    Description: CSS styling for about page NodeBucket
+*/
+
 .card {
-  margin: 5%;
+  margin: 5% 10%;
   padding: 30px;
   background-color: rgb(34, 48, 137);
   color: white;
