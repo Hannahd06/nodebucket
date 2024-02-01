@@ -6,6 +6,9 @@
     Description: CSS styling for the tasks page
 */
 
+.card-container {
+  padding: 20px;
+}
 
 .toDo-card {
   margin: auto;

@@ -207,6 +207,9 @@ export class TasksComponent {
       error: (err) => {
         console.log('error', err);
         this.errorMessage = err.message;
+        if (err = new Error('Unable to update task for empId' + empId) ) {
+          this.errorMessage = 'No tasks have been updated.';
+        }
 
         // allow user to dismiss alert
         this.hideAlert();
