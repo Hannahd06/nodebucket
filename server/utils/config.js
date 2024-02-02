@@ -1,3 +1,9 @@
+/**
+ * Title: config.js
+ * Author: Professor Krasso
+ * Modified by: Hannah Del Real
+ * Date: 01/29/34
+ */
 "use strict";
 
 const db = {

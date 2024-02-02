@@ -1,3 +1,10 @@
+/**
+ * Title: employees.js
+ * Author: Professor Krasso
+ * Modified by: Hannah Del Real
+ * Date: 01/22/24
+ */
+
 "use strict";
 
 const express = require('express');
