@@ -220,8 +220,9 @@ export class TasksComponent {
 
 
 /** Use getTask and initiate a switch case to update with a value for categoryColor of the task object
- * based on user's choice for radio button for category
- * Ensures that all values in I schema are inputted so a new task can be added
+ * User selects a category choice from radio button selections for category.
+ * The categoryColor is dictated by the corresponding color associated with the categoryTitle selected.
+ * Ensures that all values in Item schema are inputted so a new task can be added to the todo list.
  */
   getTask(text: string, categoryTitle: string) {
 
