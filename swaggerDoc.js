@@ -3,6 +3,8 @@
  * Author: Professor Krasso
  * Modified by: Hannah Del Real
  * Date: 01/17/24
+ * Resources used: Past assignments from web-420 were used as a frame of references for building swagger documentation:
+ * https://github.com/Hannahd06/web-420
  */
 
 /**
